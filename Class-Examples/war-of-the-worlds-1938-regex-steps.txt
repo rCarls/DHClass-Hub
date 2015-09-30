@@ -1,0 +1,12 @@
+I used this (credit goes to Becca)\n[A-Z]{2}.+?: to find all of the speakers.
+
+I replaced them with this </speech><speech>\0 to wrap their speeches and all of the contained stage directions.
+
+\(.+\) finds 58 things within parentheses, one of which is a quote and not a stage direction, so I replaced them all with <stageDirection>\0</stageDirection> and manually removed the tags from the quote
+
+".+" this finds everything within quotation marks, most of which are either titles of music or the show itself. One is an actual quote, which is strange because the other actual quote isn't marked by quotation marks, but bookended by (quote) and (unquote). Anyway, I replaced them all with <title>\0</title> and manually removed the tags around the actual quote
+
+I figured it would be condusive to mark just the speakers as well, so I used \n[A-Z]{2}.+?: to find them again, and simply replaced them with <speaker>\0</speaker>
+
+There's a plethora of things we could mark up with Regex in this document, like dates, or names, or time, or every mention of the word Mars; that's all easy stuff. 
+
